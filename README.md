@@ -9,6 +9,8 @@ Implementation of a Bloom filter - a space-efficient probabilistic data structur
 that supports fast insert and search operations with a controllable false positive rate.
 
 ## Repository Structure
+
+```
 bloom-filter/
 ├── src/
 │   └── bloom_filter.py        - BloomFilter implementation
@@ -25,6 +27,7 @@ bloom-filter/
 ├── pyproject.toml             - package configuration
 ├── requirements.txt           - project dependencies
 └── README.md
+```
 
 
 ## Setup
