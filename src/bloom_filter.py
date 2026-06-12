@@ -44,3 +44,8 @@ class BloomFilter:
             if self.bit_array[position] == 0:
                 return False
         return True
+
+
+def fill_ratio(self) -> float:
+    """Return the proportion of bits currently set to 1."""
+    return sum(self.bit_array) / self.size
