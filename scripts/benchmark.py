@@ -8,6 +8,7 @@ import csv
 import time
 import matplotlib.pyplot as plt
 from src.bloom_filter import BloomFilter
+import argparse
 
 
 def load_words(path: str) -> list[str]:
@@ -109,7 +110,17 @@ def plot_results(
 
 
 def run_benchmarks() -> None:
-    sizes = [1000, 10000, 50000, 100000, 200000]
+    parser = argparse.ArgumentParser(
+        description="Benchmark BloomFilter performance")
+    parser.add_argument(
+        "--sizes",
+        nargs="+",
+        type=int,
+        default=[1000, 10000, 50000, 100000, 200000],
+        help="List of word counts to benchmark (e.g. --sizes 1000 5000 10000)"
+    )
+    args = parser.parse_args()
+    sizes = args.sizes
 
     english_words = load_words("data/english_words.txt")
     dna_sequences = load_words("data/dna_sequences.txt")
