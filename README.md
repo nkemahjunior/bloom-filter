@@ -69,7 +69,13 @@ sbatch scripts/job_script.sh
 ```
 
 ## Conclusions
-- Insert and search both run in O(k) time, confirmed experimentally — average time per operation stays flat as n grows.
-- The false positive rate grows as the filter fills up, and rises sharply once insertions exceed the designed capacity.
-- The Bloom filter achieves significant memory compression over a Python set, with compression improving as more words are stored.
-- Hash uniformity is good for English words; DNA sequences show some clustering due to limited alphabet size.
+- `insert` and `search` both run in **O(k)** time where k is the number of hash
+  functions. Average time per operation stays flat as n grows, confirmed by benchmarks.
+- The false positive rate grows as more items are inserted and rises sharply once
+  insertions exceed the filter's designed capacity.
+- The Bloom filter achieves significant memory compression compared to a Python `set`,
+  with compression improving as the number of stored items grows.
+- Hash uniformity is good for English words. DNA sequences show some clustering due
+  to the limited 4-character alphabet, meaning hash functions distribute less evenly.
+- Optimal filter size depends on the target false positive rate — tighter rates
+  require larger bit arrays but still remain far more compact than storing items directly.
