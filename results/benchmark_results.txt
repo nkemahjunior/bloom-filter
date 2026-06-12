@@ -1,0 +1,13 @@
+English Words:
+  1000 words: insert=0.0035s, search=0.0035s
+  10000 words: insert=0.0357s, search=0.0350s
+  50000 words: insert=0.1808s, search=0.1809s
+  100000 words: insert=0.3600s, search=0.3629s
+  200000 words: insert=0.7219s, search=0.7306s
+
+DNA Sequences:
+  1000 words: insert=0.0035s, search=0.0035s
+  10000 words: insert=0.0347s, search=0.0350s
+  50000 words: insert=0.1790s, search=0.1804s
+  100000 words: insert=0.3583s, search=0.3609s
+  200000 words: insert=0.7203s, search=0.7259s

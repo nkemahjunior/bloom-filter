@@ -1,0 +1,24 @@
+SLURM_JOB_ID: 60536514
+SLURM_JOB_USER: vsc38838
+SLURM_JOB_ACCOUNT: lp_h_ds_students
+SLURM_JOB_NAME: bloom_benchmark
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: batch
+SLURM_NNODES: 1
+SLURM_NODELIST: n28c25n1
+SLURM_JOB_CPUS_PER_NODE: 3
+Date: Fri Jun 12 15:36:24 CEST 2026
+Walltime: 00-02:00:00
+========================================================================
+Saved 236736 English words to data/english_words.txt
+Saved 236736 DNA sequences to data/dna_sequences.txt
+[English] 1000 words: insert=0.0035s, search=0.0035s
+[English] 10000 words: insert=0.0357s, search=0.0350s
+[English] 50000 words: insert=0.1808s, search=0.1809s
+[English] 100000 words: insert=0.3600s, search=0.3629s
+[English] 200000 words: insert=0.7219s, search=0.7306s
+[DNA] 1000 words: insert=0.0035s, search=0.0035s
+[DNA] 10000 words: insert=0.0347s, search=0.0350s
+[DNA] 50000 words: insert=0.1790s, search=0.1804s
+[DNA] 100000 words: insert=0.3583s, search=0.3609s
+[DNA] 200000 words: insert=0.7203s, search=0.7259s
