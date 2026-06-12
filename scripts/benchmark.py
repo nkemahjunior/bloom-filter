@@ -4,6 +4,7 @@ Measures insert and search performance for increasing number of words.
 To be run on the HPC infrastructure.
 """
 
+import csv
 import time
 import matplotlib.pyplot as plt
 from src.bloom_filter import BloomFilter
@@ -121,8 +122,33 @@ def run_benchmarks() -> None:
     )
 
     save_results(sizes, english_insert, english_search, dna_insert, dna_search)
+    save_results_csv(sizes, english_insert, english_search,
+                     dna_insert, dna_search)
 
     plot_results(sizes, english_insert, english_search, dna_insert, dna_search)
+
+
+def save_results_csv(
+    sizes: list[int],
+    english_insert: list[float],
+    english_search: list[float],
+    dna_insert: list[float],
+    dna_search: list[float],
+) -> None:
+    """Save benchmark results to a CSV file for further analysis."""
+    with open("results/benchmark_results.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            "n_words",
+            "english_insert_s", "english_search_s",
+            "dna_insert_s", "dna_search_s"
+        ])
+        for i, n in enumerate(sizes):
+            writer.writerow([
+                n,
+                english_insert[i], english_search[i],
+                dna_insert[i], dna_search[i]
+            ])
 
 
 if __name__ == "__main__":
