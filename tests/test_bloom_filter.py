@@ -88,3 +88,22 @@ class TestBloomFilterEdgeCases:
         bf = BloomFilter(size=10000, num_hashes=10)
         bf.insert("hello")
         assert bf.search("hello") is True
+
+
+class TestBloomFilterFillRatio:
+    """Tests for fill_ratio behaviour."""
+
+    def test_empty_filter_fill_ratio_is_zero(self):
+        bf = BloomFilter(size=1000, num_hashes=3)
+        assert bf.fill_ratio() == 0.0
+
+    def test_fill_ratio_increases_after_insert(self):
+        bf = BloomFilter(size=1000, num_hashes=3)
+        bf.insert("apple")
+        assert bf.fill_ratio() > 0.0
+
+    def test_fill_ratio_between_zero_and_one(self):
+        bf = BloomFilter(size=1000, num_hashes=3)
+        for i in range(100):
+            bf.insert(f"word{i}")
+        assert 0.0 <= bf.fill_ratio() <= 1.0
