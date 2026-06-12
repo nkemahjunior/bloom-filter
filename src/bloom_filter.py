@@ -49,3 +49,11 @@ class BloomFilter:
 def fill_ratio(self) -> float:
     """Return the proportion of bits currently set to 1."""
     return sum(self.bit_array) / self.size
+
+
+def __repr__(self) -> str:
+    return (
+        f"BloomFilter(size={self.size}, "
+        f"num_hashes={self.num_hashes}, "
+        f"fill_ratio={self.fill_ratio():.3f})"
+    )
