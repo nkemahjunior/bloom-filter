@@ -17,18 +17,18 @@ def load_words(path: str) -> list[str]:
 
 def benchmark_insert(bf: BloomFilter, words: list[str]) -> float:
     """Return time taken to insert all words into the filter."""
-    start = time.time()
+    start = time.perf_counter()
     for word in words:
         bf.insert(word)
-    return time.time() - start
+    return time.perf_counter() - start
 
 
 def benchmark_search(bf: BloomFilter, words: list[str]) -> float:
     """Return time taken to search all words in the filter."""
-    start = time.time()
+    start = time.perf_counter()
     for word in words:
         bf.search(word)
-    return time.time() - start
+    return time.perf_counter() - start
 
 
 def run_benchmark_for_dataset(
