@@ -70,12 +70,18 @@ sbatch scripts/job_script.sh
 
 ## Conclusions
 - `insert` and `search` both run in **O(k)** time where k is the number of hash
-  functions. Average time per operation stays flat as n grows, confirmed by benchmarks.
+  functions. HPC benchmarks on the VSC wice cluster confirmed this with 200,000
+  English words and DNA sequences - per operation time remained constant at
+  approximately 3.6 microseconds regardless of dataset size.
+- English words and DNA sequences show near identical performance, confirming
+  the SHA-256 based hash function distributes both data types equally well.
 - The false positive rate grows as more items are inserted and rises sharply once
-  insertions exceed the filter's designed capacity.
-- The Bloom filter achieves significant memory compression compared to a Python `set`,
-  with compression improving as the number of stored items grows.
-- Hash uniformity is good for English words. DNA sequences show some clustering due
-  to the limited 4-character alphabet, meaning hash functions distribute less evenly.
-- Optimal filter size depends on the target false positive rate — tighter rates
-  require larger bit arrays but still remain far more compact than storing items directly.
+  insertions exceed the filter's designed capacity. At 5000 words in a filter
+  designed for 1000, the false positive rate reached 47%.
+- The Bloom filter achieves significant memory compression compared to a Python
+  set, with compression improving as the number of stored items grows. The filter
+  becomes more memory efficient than a Python set after approximately 2000 words,
+  stabilizing at around 6.5x compression.
+- Optimal filter size depends on the target false positive rate - tighter rates
+  require larger bit arrays but still remain far more compact than storing items
+  directly.
